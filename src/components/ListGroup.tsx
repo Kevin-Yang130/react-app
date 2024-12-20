@@ -1,9 +1,9 @@
-function ListGroup() {
-  let cities = ["New York", "London", "Tokyo"];
+import { useState } from "react";
 
-  const getMessage = () => {
-    return cities.length === 0 ? <p>No item found.</p> : null;
-  };
+function ListGroup() {
+  let cities = ["New York", "London", "Tokyo", "Miami", "San Jose"];
+
+  let [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
@@ -11,11 +11,17 @@ function ListGroup() {
         <h1>List</h1>
         {cities.length === 0 && <p> no item found. </p>}
         <ul className="list-group">
-          {cities.map((city) => (
+          {cities.map((city, index) => (
             <li
-              className="list-group-item"
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
               key={city}
-              onClick={() => console.log(city)}
+              onClick={() => {
+                setSelectedIndex(index);
+              }}
             >
               {city}
             </li>
