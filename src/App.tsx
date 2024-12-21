@@ -1,20 +1,18 @@
-import ListGroup from "./components/ListGroup";
+import Button from "./Button";
+import Alert from "./Alert";
 
 function App() {
-  let cities = ["New York", "London", "Tokyo", "Miami", "San Jose"];
-
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
+  let displayAlert = false;
 
   return (
-    <div>
-      <ListGroup
-        items={cities}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
-    </div>
+    <>
+      <div>
+        {displayAlert && <Alert> You Touched the Button </Alert>}
+        <Button onClick={() => (displayAlert = true)}>
+          Click me to show the alert
+        </Button>
+      </div>
+    </>
   );
 }
 
